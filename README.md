@@ -23,3 +23,6 @@
 - Navbar should update with user's photo as soon as user logsin
 - Redirect the page to Feed component as soon as the user logs in
 - Refactor code to to create a constants file and keep the BASE URL there
+- You should not access other routes without login - test
+- If token not present, redirect to Login
+- Build Logout Feature
