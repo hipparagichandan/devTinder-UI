@@ -26,3 +26,11 @@
 - You should not access other routes without login - test
 - If token not present, redirect to Login
 - Build Logout Feature
+- in Feed Component fetch Feed from API 
+- Create a feedSlice and store fethed data to redux
+- Build a UserCard component
+- Build Profile component and use the same UserCard in profile along with the form
+- Show a success toast after succesfully updating profile
+- Build Connections Page - DisplayConnectionCard component to isolate rendering logic
+- Build Pending Requests Page - DisplayRequestCard component to isolate rendering logic
+- After reviewing and either on clicking accepted/rejected the card should disappear from Requests page, if accepted should appear on Connections Page 
