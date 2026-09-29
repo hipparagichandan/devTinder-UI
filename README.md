@@ -34,3 +34,4 @@
 - Build Connections Page - DisplayConnectionCard component to isolate rendering logic
 - Build Pending Requests Page - DisplayRequestCard component to isolate rendering logic
 - After reviewing and either on clicking accepted/rejected the card should disappear from Requests page, if accepted should appear on Connections Page 
+- On Feed Page, complete interested and ignored features

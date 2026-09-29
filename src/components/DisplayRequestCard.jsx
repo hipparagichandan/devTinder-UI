@@ -13,7 +13,6 @@ const DisplayRequestCard = ({request}) => {
         try{
             const res = await axios.post(BASE_URL + "/request/review/" + status+"/"+requestId, {}, {withCredentials : true})
             dispatch(removeRequest(id))
-            console.log(res?.data?.request)
         }catch(err){
             console.error(err.response.satatus)
         }

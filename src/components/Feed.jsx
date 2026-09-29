@@ -26,6 +26,10 @@ const Feed = () => {
     }
   }, [dispatch, feedData])
 
+  if(!feedData) return;
+  
+  if(feedData?.length === 0) return <h1>No Users Found in Feed</h1>
+
   return ( feedData && 
     <div className="flex justify-center my-10">
       <UserCard user={feedData[0]} />
