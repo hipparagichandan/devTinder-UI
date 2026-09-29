@@ -21,8 +21,6 @@ const Body = () => {
 
     async function fetchUser() {
       try{
-        
-        console.log("Fetching userData from Body useEffect")
         const res = await axios.get(BASE_URL+"/profile/view", 
           {
             withCredentials : true
