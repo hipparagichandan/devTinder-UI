@@ -35,3 +35,14 @@
 - Build Pending Requests Page - DisplayRequestCard component to isolate rendering logic
 - After reviewing and either on clicking accepted/rejected the card should disappear from Requests page, if accepted should appear on Connections Page 
 - On Feed Page, complete interested and ignored features
+
+
+# Deployment
+
+- signup on AWS console
+- Launch an EC2 instance - .pem key downloaded
+- GitBash here
+- chmod 400 "devTinder-secret.pem"
+- ssh -i "devTinder-secret.pem" ubuntu@ec2-13-61-143-165.eu-north-1.compute.amazonaws.com 
+- Install Node version v24.14.1
+- Git clone both devTinder and devTinder-ui projects
