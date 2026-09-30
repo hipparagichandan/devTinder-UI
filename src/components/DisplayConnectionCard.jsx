@@ -2,7 +2,7 @@
 const DisplayUserCard = ({user}) => {
   const {firstName, lastName, age, gender, imageUrl,about} = user
   return (
-    <div className="hero bg-base-200 min-h-screen">
+    <div className="hero bg-base-200">
         <div className="hero-content flex-col lg:flex-row">
             <img
             alt="user image"
@@ -17,7 +17,6 @@ const DisplayUserCard = ({user}) => {
             <p className="py-6">
                 {about}
             </p>
-            <button className="btn btn-primary">Get Started</button>
             </div>
         </div>
     </div>
