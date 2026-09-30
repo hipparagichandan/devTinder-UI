@@ -46,3 +46,15 @@
 - ssh -i "devTinder-secret.pem" ubuntu@ec2-13-61-143-165.eu-north-1.compute.amazonaws.com 
 - Install Node version v24.14.1
 - Git clone both devTinder and devTinder-ui projects
+
+- FrontEnd Project
+    - Npm install on EC2 machine
+    - npm run build
+    - sudo apt update
+    - sudo apt install nginx
+    - sudo systemctl start nginx
+    - sudo systemctl enable nginx
+    - copy code  from dist (build files) folder to /var/www/html
+    - sudo scp -r dist/* /var/www/html/
+    - Enable port :80 on your instance
+        - AWS -> Security ->security group -> Inbound rules -> edit -> Add a rule -> port range :80 --- 0000.0
