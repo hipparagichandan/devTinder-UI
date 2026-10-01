@@ -59,6 +59,11 @@
     - Enable port :80 on your instance
         - AWS -> Security ->security group -> Inbound rules -> edit -> Add a rule -> port range :80 --- 0000.0
 
+    ----- DONE ---
+
+    - If redeploying the code after making changes, this command will be handy to delete existing files at /var/www/html. Instead of deleting and copying manually, use rsync with the --delete flag. This tool is built specifically for this job. It compares the two folders, copies the new files, and automatically deletes any files in /var/www/html that are no longer present in dist.
+        - sudo rsync -av --delete dist/ /var/www/html/
+
 - Backend Project
     - cd devTinder
     - npm install
@@ -113,4 +118,24 @@
             }
         - sudo systemctl restart nginx
 
+# Adding a custom DOmain Name
+    - purchased domain name from godaddy
+    - signup on cloudfare & add a new domain name
+    - change the nameservers on Godaddy and point it to cloudfare
+    - DNS record: A devTinder.in 13.61.143.165
+    - Enable SSL for website
 
+# Sending Email Via SES
+    - Create a IAM user
+    - Give access to AmazonSESFullAccess
+    - Amazon SES: Create an Identity
+    - Verify your domain name
+    - verify an email address identity
+    - Install AWS SDK - v3
+    - code Example https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javascriptv3/example_code/ses#code-examples
+    - Setup SESClient
+    - Access Credentials should be created in IAM under SecurityCredentials Tab
+    - Add the credentials to the env file
+    - Write code for SESClient
+    - Write code for sending email address
+    - Make the email dyncamic by passing more params to the run function

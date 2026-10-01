@@ -6,7 +6,7 @@ import {addUser} from "../store/slices/userSlice"
 import { BASE_URL } from '../utils/constants';
 
 const Login = () => {
-  const [emailId,setEmailId] = useState("@gmail.com");
+  const [emailId,setEmailId] = useState("");
   const [password,setPassword] = useState("")
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -71,7 +71,7 @@ const Login = () => {
         <input type="email" className="input" placeholder="Email" value={emailId} onChange={e=> {setEmailId(e.target.value)}}  />
 
         <label className="label">Password</label>
-        <input type="text" className="input" placeholder="Password" value={password} onChange={(e) => {setPassword(e.target.value)}} />
+        <input type="password" className="input" placeholder="Password" value={password} onChange={(e) => {setPassword(e.target.value)}} />
         <p className='text-red-500'>{error}</p>
         {!isSignup && <>
           <button className="btn btn-neutral mt-4" onClick={handleLoginClick}>Login</button>
