@@ -58,3 +58,59 @@
     - sudo scp -r dist/* /var/www/html/
     - Enable port :80 on your instance
         - AWS -> Security ->security group -> Inbound rules -> edit -> Add a rule -> port range :80 --- 0000.0
+
+- Backend Project
+    - cd devTinder
+    - npm install
+    - allowed ec2 instance public IP on mongoDB server
+    - npm start (but we will use pm2 to start this application)
+    - npm install pm2 -g //this is to keep your server running 24/7 pm2 manages it// PM  : process Manager
+    - pm2 start npm -- start // default app name will be npm. To give custom name, check the below command
+    - pm2 start npm --name "devTinder-backend" -- start
+    - pm2 logs
+    - pm2 list, pm2 flush <name> ,pm2 stop <name> (pm2 stop devTinder-backend), pm2 delete <name>
+    - config nginx - /etc/nginx/sites-available/default
+    - restart nginx - sudo systemctl restart nginx
+    - modify the BASE_URL = "/api" in front end project
+
+
+- Connecting FE & BE
+    - Frontend = http://13.61.143.165/
+    - Backend  = http://13.61.143.165:7777
+
+    - Domain name = devTinder.com => 13.61.143.165
+
+    - Frontend = devTinder.com
+    - Backend  = devTinder.com:7777 ==> devTinder.com/api  (we don't want it like :7777. Instead we want it to be like devTinder.com/api should be running Backend)
+    - To do this, we need to proxy pass /api/ to :7777 using nginx proxy pass on EC2 machine
+
+    # nginx config:
+        - sudo nano /etc/nginx/sites-available/default
+
+        - server_name 23.61.143.165 
+
+            server {
+                listen 80;
+                server_name your_domain_or_ip; # Change this to your domain or server IP
+
+                # Handles API requests and strips the "/api" prefix
+                location /api/ {
+                    proxy_pass http://127.0.0; # Note the trailing slash here
+                    
+                    # Core Proxy Configuration
+                    proxy_set_header Host $host;
+                    proxy_set_header X-Real-IP $remote_addr;
+                    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                    proxy_set_header X-Forwarded-Proto $scheme;
+
+                    # WebSocket & Persistent Connection Support
+                    proxy_http_version 1.1;
+                    proxy_set_header Upgrade $http_upgrade;
+                    proxy_set_header Connection 'upgrade';
+                    proxy_cache_bypass $http_upgrade;
+
+                }
+            }
+        - sudo systemctl restart nginx
+
+
